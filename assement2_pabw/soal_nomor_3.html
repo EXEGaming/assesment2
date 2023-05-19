@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form id="apiForm">
+        <label for="titleInput">Title:</label>
+        <input type="text" id="titleInput" name="Title"><br>
+        <span id="titleError" class="error"></span><br>
+        <label for="contentInput">Content:</label>
+        <input type="text" id="contentInput" name="Content"><br>
+        <span id="contentError" class="error"></span><br>
+    
+        <label for="statusInput">Status:</label>
+        <input type="text" id="statusInput" name="Status"><br>
+        <span id="statusError" class="error"></span><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+        document.getElementById("apiForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            validateForm();
+        });
+    
+        function validateForm() {
+            clearErrors();
+    
+            var titleInput = document.getElementById("titleInput");
+            var contentInput = document.getElementById("contentInput");
+            var statusInput = document.getElementById("statusInput");
+    
+            var titleError = document.getElementById("titleError");
+            var contentError = document.getElementById("contentError");
+            var statusError = document.getElementById("statusError");
+    
+            var isValid = true;
+    
+            if (titleInput.value.trim() === "") {
+                titleError.textContent = "Title is required.";
+                isValid = false;
+            }
+    
+            if (contentInput.value.trim() === "") {
+                contentError.textContent = "Content is required.";
+                isValid = false;
+            }
+    
+            if (statusInput.value.trim() === "") {
+                statusError.textContent = "Status is required.";
+                isValid = false;
+            }
+    
+            if (isValid) {
+                // Lakukan tindakan yang ingin Anda lakukan jika formulir valid
+                console.log("Form submitted!");
+            }
+        }
+    
+        function clearErrors() {
+            var errorElements = document.getElementsByClassName("error");
+            for (var i = 0; i < errorElements.length; i++) {
+                errorElements[i].textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>    
