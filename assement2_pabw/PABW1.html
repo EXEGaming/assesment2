@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Form</title>
+</head>
+<body>
+    <form id="apiForm">
+        <label for="idInput">ID:</label>
+        <input type="text" id="idInput" name="id" readonly><br>
+
+        <label for="adviceInput">Advice:</label>
+        <input type="text" id="adviceInput" name="advice" readonly><br>
+
+        <label for="dateInput">Date:</label>
+        <input type="text" id="dateInput" name="date" readonly><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const jsonData = {
+            "id": 101,
+            "advice": "Always do anything for love, but don't do that.",
+            "date": "2015-12-08"
+        };
+
+        document.getElementById("idInput").value = jsonData.id;
+        document.getElementById("adviceInput").value = jsonData.advice;
+        document.getElementById("dateInput").value = jsonData.date;
+
+        document.getElementById("apiForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            // Tambahkan logika yang ingin Anda lakukan ketika formulir disubmit di sini
+            console.log("Form submitted!");
+        });
+    </script>
+</body>
+</html>
